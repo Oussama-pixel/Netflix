@@ -8,7 +8,7 @@ export default function WidgetSm() {
      useEffect(()=>{
         const getNewUsers = async ()=>{
             try {
-                const {data} = axios.get("/users?new=true",{
+                const {data} = await axios.get("/users?new=true",{
                     headers:{
                         token:"Bearer "
                     }
@@ -24,7 +24,7 @@ export default function WidgetSm() {
         <div className="widgetSm">
             <span className="widgetSmTitle">New Join Members</span>
             <ul className="widgetSmList">
-                {newUsers.map(user=>{
+                {newUsers.map(user=>(
                     <li className="widgetSmListItem">
                         <img src={user.profilePic||"/images/defaultImg.png"} alt="" className="widgetSmImg" />
                         <div className="widgetSmUser">
@@ -37,7 +37,7 @@ export default function WidgetSm() {
                             Display
                         </button>
                     </li>
-                })}
+                ))}
             </ul>
         </div>
     )

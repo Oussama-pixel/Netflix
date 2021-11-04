@@ -36,6 +36,9 @@ function App() {
             <Route path="/" exact>
               <Home/>
             </Route>
+            <Route path="/createMovie" exact>
+              <NewProduct/>
+            </Route>
             <Route path="/users" exact>
               <UserList/>
             </Route>

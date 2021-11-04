@@ -6,11 +6,12 @@ const Movie = require("../models/Movie");
 //CREATE
 
 router.post("/",verify,async (req,res)=>{
+    console.log("hola");
     if(req.user.isAdmin){
         const newMovie = new Movie(req.body);
-
         try {
             const savedMovie = await newMovie.save();
+            console.log("hi",savedMovie);
             res.status(200).json(savedMovie);
         } catch (error) {
             res.status(500).json(err)

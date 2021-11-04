@@ -8,7 +8,7 @@ const movieRoute = require("./routes/movies")
 const listsRoute = require("./routes/lists")
 
 
-dotenv.config()
+dotenv.config();
 app.listen(8800, ()=>{
     console.log("Backend Server is running!");
 })

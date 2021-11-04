@@ -1,8 +1,9 @@
 import { useContext, useState } from 'react'
 import './newProduct.scss'
-import storage from '../../firebase';
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { createMovies } from '../../context/movieContext/apiCalls';
 import { MovieContext } from '../../context/movieContext/MovieContext';
+import storage from '../../firebase';
 
 export default function NewProduct() {
     const [movie, setMovie] = useState(null)
@@ -21,16 +22,17 @@ export default function NewProduct() {
     const upload = (items)=>{
         items.forEach(item=>{
             const filename = new Date().getTime() + item.label +item.file.name;
-            const uploadTask = storage.ref(`/items/${filename}`).put(item.file)
+            const storageRef = ref(storage,`/items/${filename}`);
+            const uploadTask = uploadBytesResumable(storageRef, item.file);
             uploadTask.on("state_changes",(snapshot)=>{
-                const progress = (snapshot.bytesTranferred/ snapshot.totalBytes)*100;
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
                 console.log(progress);
             },
             (err)=>console.log(err),
             ()=>{
-                uploadTask.snapshot.ref.getDownloadURL().then(url=>{
+                getDownloadURL(uploadTask.snapshot.ref).then(url=>{
                     setMovie((prev)=>{
-                        return {... prev,[item.label]:url}
+                        return {...prev,[item.label]:url}
                     });
                     setUploaded((prev)=>prev+1)
                 })

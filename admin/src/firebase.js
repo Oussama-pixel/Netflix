@@ -1,5 +1,6 @@
-import * as firebase from "firebase/app";
-import * as storage from  'firebase/storage';
+import { initializeApp } from "firebase/app";
+import { getStorage } from "firebase/storage";
+
 const firebaseConfig = {
     apiKey : "AIzaSyCFT8VhxNUI9uDTB-2xUuaiWN4bsWQ5sPY" , 
     authDomain : "netflix-e5d59.firebaseapp.com" , 
@@ -9,7 +10,6 @@ const firebaseConfig = {
     appId : "1: 387563984748: web: d8f74e862c84ea48cc4549" , 
     measurementId : "G-VG0VDQ3PME" 
 }
-firebase.initializeApp(firebaseConfig)
-
-
-export default storage;
+const firebaseApp = initializeApp(firebaseConfig)
+const storage =  getStorage(firebaseApp);
+export default  storage;

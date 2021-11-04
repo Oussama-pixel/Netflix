@@ -1,5 +1,5 @@
 import { List } from '@material-ui/core'
-import { LineStyle, Timeline, TrendingUp,PermIdentity,Storefront,AttachMoney,BarChart, MailOutline, DynamicFeed, ChatBubbleOutline, WorkOutline, Report, PlayCircleOutline } from '@material-ui/icons'
+import { LineStyle, Timeline, TrendingUp,PermIdentity,Storefront,AttachMoney,BarChart, MailOutline, DynamicFeed, ChatBubbleOutline, WorkOutline, Report, PlayCircleOutline, ListAlt } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
 import './sidebar.scss'
 
@@ -43,7 +43,7 @@ export default function Sidebar() {
                         </li>
                         <li className="sidebarListItem">
                             <Link to="/lists">
-                              <List  className="sidebarIcon"/>
+                              <ListAlt  className="sidebarIcon"/>
                               Lists 
                             </Link>
                         </li>
