@@ -32,7 +32,7 @@ export default function Register() {
             <div className="top">
                 <div className="wrapper">
                     <img src="/images/Netflix-page-logo.png" alt="" className="logo" />
-                    <button className="loginButton">
+                    <button className="loginButton" onClick={()=>history.push("/login")}>
                         Sign In
                     </button>
                 </div>
